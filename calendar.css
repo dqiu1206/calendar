@@ -1,0 +1,130 @@
+body {
+    background-image: url("http://eppora.com/wp-content/uploads/2015/05/plain-light-color-for-guest-background.jpg");
+    background-size: cover;
+}
+
+table,th,td {
+   border: 1px solid black;   
+}
+
+table {
+    border-collapse: collapse;
+    width: 70%;
+    table-layout: fixed;
+}
+
+td {
+    height: 100px;
+    vertical-align: text-top;
+}
+
+output.currentMonth {
+    font-size: 250%;
+    font-family: Arial;
+    text-align: center;
+}
+
+div.output {
+    text-align: center;
+}
+
+div.addEvent {
+    text-align: center;
+    padding-bottom: 100px;
+}
+
+div.editEvent {
+    text-align: center;
+    padding-bottom: 100px;
+}
+
+div.selectCategoryDiv {
+    text-align: center;
+    padding-bottom: 100px;
+}
+
+p {
+    font-size: 150%;
+    font-family: Arial;
+    text-align: center;
+}
+
+button {
+    border: none;
+    color: black;
+    padding: 15px 32px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+input[type=text] {
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    width: 20%
+}
+
+input[type=time] {
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    width: 20%
+}
+
+input[type=date] {
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    width: 20%
+}
+
+input[type=password] {
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    width: 20%
+}
+
+#row1, #row2, #row3, #row4, #row5, #row6 {
+    display: none;
+}
+
+#logout_btn {
+    display: none;
+}
+
+#logged_out {
+    display: block;
+    text-align: center;
+}
+
+#addEventDiv {
+    display: none;
+}
+
+#editEventDiv {
+    display: none;
+}
+
+#select_category {
+    display: none;
+}
+
+#share_with_other {
+    display: none;
+    text-align: center;
+}
+button.eventButton {
+    border: none;
+    color: blue;
+    background-color: transparent; 
+    padding: 0px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    overflow: hidden;
+}

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Log-in</title>
+    <link rel="stylesheet" type="text/css" href="calendar.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+</head>
+
+<body id="load">
+    <p id="currentUser">Not logged in</p>
+    
+	<!-- This div outputs the current month and year -->
+	<div class="output">
+		<output id="currentMonth" class="currentMonth"></output>
+	</div><br>
+	
+	<!--Previous and Next month buttons -->
+    <div class="month_buttons" align="center">
+        <button id="previous_month_btn">Previous Month</button>
+        <button id="next_month_btn">Next Month</button>
+    </div>
+
+	<!--Calendar represented as a table -->
+	<table id='myTable' class="calendar" align="center">
+	  <tr>
+		<th>Sunday</th>
+		<th>Monday</th>
+		<th>Tuesday</th>
+		<th>Wednesday</th>
+		<th>Thursday</th>
+		<th>Friday</th>
+		<th>Saturday</th>
+	</tr>
+	<tr id="row1">
+	  <td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr id="row2">
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr id="row3">
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr id="row4">
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr id="row5">
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr id="row6">
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	</table><br><br>
+    
+    <!--Form for creating an event -->    
+    <div id="addEventDiv" class="addEvent">
+        <p>Create an Event:</p>
+        <input type="date" id="date" required/><br>
+        <input type ="time" id="time" required/><br>
+        <input type ="text" id="title" placeholder="Event Title" maxlength="30"/><br>
+        <input type ="text" id="category" placeholder="Category" maxlength="30"/><br><br>
+        Make this a group event?<br>
+        <label><input type="radio" name="group_event" value="true">Yes</label><br>
+		<label><input type="radio" name="group_event" value="false" checked="checked">No</label><br>
+        <button id="addEvent">Add Event</button>
+    </div>
+	
+	<!--Form for editing an event -->
+	<div id="editEventDiv" class="editEvent">
+		<p>Event Details:</p>
+		<input type="hidden" id="editToken"/>
+		<input type="hidden" id="editStoryID"/>
+		<input type="date" id="editDate" /><br>
+        <input type ="time" id="editTime" /><br>
+        <input type ="text" id="editTitle" placeholder="Event Title" maxlength="30"/><br>
+        <input type ="text" id="editCategory" placeholder="Category" maxlength="30" /><br><br>
+		
+        <div id="sameUserDiv">Make this a group event?<br>
+			<label><input type="radio" name="edit_group_event" value="true" id="group_true">Yes</label><br>
+			<label><input type="radio" name="edit_group_event" value="false" id = "group_false">No</label><br>
+			<button id="editEvent">Save Changes</button>
+			<button id="deleteEvent">Delete Event</button>
+		</div>
+	</div>
+	
+	<!--Form for selecting a category-->
+	<div id="select_category" class="selectCategoryDiv">
+		<p>Select events by category:</p>
+		<input type="text" id="select_category_input" placeholder="Enter Category" maxlength="30"/><br>
+		<button id="select_category_btn">Show Category</button>
+		<button id="deselect_category">Unselect Category</button>
+	</div>
+	
+	<!--Form for sharing events with another user -->
+	<div id="share_with_other"  >
+		<p>Share your events with another user:</p>
+		<input type="text" id="share_input" placeholder="Username" maxlength="50"/><br>
+		<button id="share_btn">Share</button>
+	</div>
+	
+	<!-- Form for logging in and registering-->
+    <div id="logged_out">
+        <input type="text" id="username" placeholder="Username" maxlength="50"/>
+        <input type="password" id="password" placeholder="Password" maxlength="255"/>
+        <button id="login_btn">Log In</button>
+        <button id="register_btn">Register</button>
+    </div>
+    
+	<!-- Logout button -->
+    <button id="logout_btn">Log out</button>
+	
+	<script type="text/javascript" src="calendar.js"></script>
+	<script type="text/javascript" src="ajax.js"></script>
+
+</body>
+</html>
