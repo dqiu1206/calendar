@@ -12,6 +12,25 @@
 * JSHint: ajax.js passes JSHint with one "error" because helper function is in calendar.js (which is compressed and does not pass JSHint)
 
 
-### Who do I talk to? ###
+### Database Setup ###
+Events:
+event_id unsigned int not null auto_increment
+username varchar(50) not null
+title varchar(30) not null
+date date not null
+time varchar(20) not null
+category varchar(30) not null
+group_event enum('true','false') not null
+primary key: event_id
+foreign key: username ref users(username)
 
-* David Qiu (437405) or Zach Miller (457758)
+Users:
+username varchar(50) not null
+hashed_pass mediumtext not null
+primary key(username)
+
+Share:
+id mediumint auto_increment not null
+sharing_user varchar(50) not null
+target_user varchar(50) not null
+primary key(id)
