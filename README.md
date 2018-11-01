@@ -1,6 +1,6 @@
-### Information for Grading TA ###
+### General Info ###
 
-* Link to calendar: http://ec2-52-15-177-59.us-east-2.compute.amazonaws.com/~zachmiller/module5group/homepage.html
+* Link to calendar: http://ec2-3-16-29-241.us-east-2.compute.amazonaws.com/~david.qiu/homepage.html
 * Currently, there are no registered users or events.
 * Users can register/login/logout
 * Once logged in, users can create events by clicking anywhere on the the calendar
