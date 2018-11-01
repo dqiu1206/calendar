@@ -1,7 +1,7 @@
 //global variables
 var isCategory = false;
 var loggedIn = false;
-var currentMonth = new Month(2017, 9);
+var currentMonth = new Month(2018, 11);
 //add Event Listeners to all buttons
 document.getElementById("login_btn").addEventListener("click", loginAjax, false);
 document.getElementById("register_btn").addEventListener("click", registerAjax, false);
@@ -32,11 +32,14 @@ function loginAjax(event){
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
     var dataString = "username=" + encodeURIComponent(username) + "&password=" + encodeURIComponent(password);
+
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.open("POST", "login_ajax.php", true);
     xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xmlHttp.addEventListener("load", function(event){
-        var jsonData = JSON.parse(event.target.responseText);
+        var newString = event.target.responseText.split("{");
+        var jsonString = "{" + newString[1];
+        var jsonData = JSON.parse(jsonString);
         if(jsonData.success){
             alert("You've been Logged In!");
             document.getElementById("currentUser").innerHTML = "Logged In As: " + htmlEntities(username);
@@ -67,7 +70,9 @@ function registerAjax(event){
     xmlHttp.open("POST", "register_ajax.php", true);
     xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xmlHttp.addEventListener("load", function(event){
-        var jsonData = JSON.parse(event.target.responseText);
+        var newString = event.target.responseText.split("{");
+        var jsonString = "{" + newString[1];
+        var jsonData = JSON.parse(jsonString);
         if(jsonData.success){
          alert("You've been registered!");
      }else{
@@ -82,7 +87,9 @@ function logoutAjax(event){
     xmlHttp.open("POST", "logout_ajax.php", true);
     xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xmlHttp.addEventListener("load", function(event){
-        var jsonData = JSON.parse(event.target.responseText);
+        var newString = event.target.responseText.split("{");
+        var jsonString = "{" + newString[1];
+        var jsonData = JSON.parse(jsonString);
         if(jsonData.success){
             document.getElementById("currentUser").innerHTML = "Not Logged In";
             document.getElementById("logged_out").style.display = "block";
@@ -133,7 +140,9 @@ function addEvent(event){
     xmlHttp.open("POST", "add_event_ajax.php", true);
     xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xmlHttp.addEventListener("load", function(event){
-        var jsonData = JSON.parse(event.target.responseText);
+        var newString = event.target.responseText.split("{");
+        var jsonString = "{" + newString[1];
+        var jsonData = JSON.parse(jsonString);
         if(jsonData.success){
             document.getElementById("date").value = "";
             document.getElementById("time").value = "";
@@ -168,7 +177,9 @@ function editEvent(event){
     xmlHttp.open("POST", "edit_event_ajax.php", true);
     xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xmlHttp.addEventListener("load", function(event){
-        var jsonData = JSON.parse(event.target.responseText);
+        var newString = event.target.responseText.split("{");
+        var jsonString = "{" + newString[1];
+        var jsonData = JSON.parse(jsonString);
         if(jsonData.success){
             document.getElementById("editEventDiv").style.display = "none";
             document.getElementById("addEventDiv").style.display = "block";
@@ -191,7 +202,9 @@ function deleteEvent(event){
     xmlHttp.open("POST", "delete_event_ajax.php", true);
     xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xmlHttp.addEventListener("load", function(event){
-        var jsonData = JSON.parse(event.target.responseText);
+        var newString = event.target.responseText.split("{");
+        var jsonString = "{" + newString[1];
+        var jsonData = JSON.parse(jsonString);
         if(jsonData.success){
             alert("Event deleted");
             document.getElementById("editEventDiv").style.display = "none";
@@ -213,7 +226,9 @@ function shareWithUser() {
     xmlHttp.open("POST", "insert_user.php", true);
     xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xmlHttp.addEventListener("load", function(event){
-        var jsonData = JSON.parse(event.target.responseText);
+        var newString = event.target.responseText.split("{");
+        var jsonString = "{" + newString[1];
+        var jsonData = JSON.parse(jsonString);
         if(jsonData.success){
             alert("Share success");
         }else{
@@ -279,7 +294,6 @@ function updateCalendar(){
                 }
             }
             var rows = "row" + i;
-            console.log(rows);
             document.getElementById(rows).style.display = "table-row";
             i = i + 1;
         }
@@ -300,7 +314,9 @@ function getSharedEvents(day,month,year,row,col,category){
     xmlHttp.open("POST", "share_with_user.php", true);
     xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xmlHttp.addEventListener("load", function(event){
-        var jsonData = JSON.parse(event.target.responseText);
+        var newString = event.target.responseText.split("{");
+        var jsonString = "{" + newString[1];
+        var jsonData = JSON.parse(jsonString);
         if(jsonData.success){
             for (var j in jsonData.title){
                 if(jsonData.title.hasOwnProperty(j)){
@@ -336,11 +352,12 @@ function getEvents(day, month, year, row, col,category){
     xmlHttp.open("POST", "show_events_ajax.php", true);
     xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xmlHttp.addEventListener("load", function(event){
-        var jsonData = JSON.parse(event.target.responseText);
+        var newString = event.target.responseText.split("{");
+        var jsonString = "{" + newString[1];
+        var jsonData = JSON.parse(jsonString);
         if(jsonData.success){
             for (var j in jsonData.title){
                 if(jsonData.title.hasOwnProperty(j)){
-
 
                     var line_break = document.createElement("br");
                     var button = document.createElement("button");
@@ -366,7 +383,9 @@ function showEvent() {
     xmlHttp.open("POST", "show_event.php", true);
     xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xmlHttp.addEventListener("load", function(event){
-        var jsonData = JSON.parse(event.target.responseText);
+        var newString = event.target.responseText.split("{");
+        var jsonString = "{" + newString[1];
+        var jsonData = JSON.parse(jsonString);
         if(jsonData.success){
             document.getElementById("addEventDiv").style.display = "none";
             document.getElementById("editEventDiv").style.display = "block";
